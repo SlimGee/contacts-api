@@ -3,48 +3,24 @@ import Contact from 'App/Models/Contact'
 import Route from '@ioc:Adonis/Core/Route'
 import StoreContactValidator from 'App/Validators/StoreContactValidator'
 import UpdateContactValidator from 'App/Validators/UpdateContactValidator'
+import { QueryBuilder } from 'App/Builder/QueryBuilder'
 
 export default class ContactsController {
-    public async index({ response, request }: HttpContextContract) {
-        let contacts = Contact.query()
-
-        const allowedScopes = ['search']
-        const allowedFilters = []
-        const allowedSorts = []
-
-        const { sort, filter } = request.qs()
-
-        if (sort) {
-            sort.split(',').forEach((param) => {
-                const items = param.split('-')
-                if (items.length == 2 && items[1] in allowedSorts) {
-                    contacts = contacts.orderBy(items[1], 'desc')
-                } else if (items[0] in allowedSorts) {
-                    contacts = contacts.orderBy(items[0])
-                }
+    public async index(ctx: HttpContextContract) {
+        const contacts = await QueryBuilder.for(Contact, ctx)
+            .sort(['name', 'id', 'email'])
+            .filter({
+                scopes: {
+                    search: 'search',
+                },
             })
-        }
+            .get()
 
-        if (filter) {
-            for (const filterKey in filter) {
-                console.log(filterKey)
-
-                if (allowedScopes.includes(filterKey)) {
-                    contacts.withScopes((scopes) => scopes.search(filter[filterKey]))
-                }
-                if (filterKey in allowedFilters) {
-                    contacts.where(filterKey, filter[filterKey])
-                }
-            }
-        }
-
-        //  const contacts = await Contact.all()
-
-        return response.json({
+        return ctx.response.json({
             links: {
                 self: Route.makeUrl('contacts.index'),
             },
-            data: await contacts,
+            data: contacts,
         })
     }
 
