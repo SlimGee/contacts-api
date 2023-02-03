@@ -35,7 +35,7 @@ node ace serve --watch
 
 ## docs
 
-find the API documentation at (https://documenter.getpostman.com/view/12329212/2s935mskGw)[https://documenter.getpostman.com/view/12329212/2s935mskGw]
+find the API documentation at https://documenter.getpostman.com/view/12329212/2s935mskGw
 
 ## Testing
 
