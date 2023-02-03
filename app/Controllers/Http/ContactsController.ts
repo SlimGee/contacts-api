@@ -5,14 +5,46 @@ import StoreContactValidator from 'App/Validators/StoreContactValidator'
 import UpdateContactValidator from 'App/Validators/UpdateContactValidator'
 
 export default class ContactsController {
-    public async index({ response }: HttpContextContract) {
-        const contacts = Contact.all()
+    public async index({ response, request }: HttpContextContract) {
+        let contacts = Contact.query()
+
+        const allowedScopes = ['search']
+        const allowedFilters = []
+        const allowedSorts = []
+
+        const { sort, filter } = request.qs()
+
+        if (sort) {
+            sort.split(',').forEach((param) => {
+                const items = param.split('-')
+                if (items.length == 2 && items[1] in allowedSorts) {
+                    contacts = contacts.orderBy(items[1], 'desc')
+                } else if (items[0] in allowedSorts) {
+                    contacts = contacts.orderBy(items[0])
+                }
+            })
+        }
+
+        if (filter) {
+            for (const filterKey in filter) {
+                console.log(filterKey)
+
+                if (allowedScopes.includes(filterKey)) {
+                    contacts.withScopes((scopes) => scopes.search(filter[filterKey]))
+                }
+                if (filterKey in allowedFilters) {
+                    contacts.where(filterKey, filter[filterKey])
+                }
+            }
+        }
+
+        //  const contacts = await Contact.all()
 
         return response.json({
             links: {
                 self: Route.makeUrl('contacts.index'),
             },
-            data: contacts,
+            data: await contacts,
         })
     }
 
