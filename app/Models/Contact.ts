@@ -22,11 +22,11 @@ export default class Contact extends BaseModel {
 
     public static search = scope((query, term: string) => {
         query
-            .whereLike('name', '%' + term + '%')
-            .orWhereLike('email', '%' + term + '%')
-            .orWhereLike('address', '%' + term + '%')
-            .orWhereLike('mobile', '%' + term + '%')
-            .orWhereLike('mobile2', '%' + term + '%')
+            .whereRaw("name like '%" + term + "%'")
+            .orWhereRaw("email like '%" + term + "%'")
+            .orWhereRaw("address like '%" + term + "%'")
+            .orWhereRaw("mobile like '%" + term + "%'")
+            .orWhereRaw("mobile2 like '%" + term + "%'")
     })
 
     @column.dateTime({ autoCreate: true })

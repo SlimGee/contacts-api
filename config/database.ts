@@ -10,7 +10,7 @@ import Application from '@ioc:Adonis/Core/Application'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
 const databaseConfig: DatabaseConfig = {
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Connection
   |--------------------------------------------------------------------------
@@ -20,10 +20,10 @@ const databaseConfig: DatabaseConfig = {
   | file.
   |
   */
-  connection: Env.get('DB_CONNECTION'),
+    connection: Env.get('DB_CONNECTION'),
 
-  connections: {
-    /*
+    connections: {
+        /*
     |--------------------------------------------------------------------------
     | SQLite
     |--------------------------------------------------------------------------
@@ -34,25 +34,40 @@ const databaseConfig: DatabaseConfig = {
     | npm i sqlite3
     |
     */
-    sqlite: {
-      client: 'sqlite',
-      connection: {
-        filename: Application.tmpPath('db.sqlite3'),
-      },
-      pool: {
-        afterCreate: (conn, cb) => {
-          conn.run('PRAGMA foreign_keys=true', cb)
-        }
-      },
-      migrations: {
-        naturalSort: true,
-      },
-      useNullAsDefault: true,
-      healthCheck: false,
-      debug: false,
-    },
+        sqlite: {
+            client: 'sqlite',
+            connection: {
+                filename: Application.databasePath('database.sqlite3'),
+            },
+            pool: {
+                afterCreate: (conn, cb) => {
+                    conn.run('PRAGMA foreign_keys=true', cb)
+                },
+            },
+            migrations: {
+                naturalSort: true,
+            },
+            useNullAsDefault: true,
+            healthCheck: false,
+            debug: false,
+        },
 
-  }
+        mysql: {
+            client: 'mysql2',
+            connection: {
+                host: Env.get('MYSQL_HOST'),
+                port: Env.get('MYSQL_PORT'),
+                user: Env.get('MYSQL_USER'),
+                password: Env.get('MYSQL_PASSWORD', ''),
+                database: Env.get('MYSQL_DB_NAME'),
+            },
+            migrations: {
+                naturalSort: true,
+            },
+            healthCheck: false,
+            debug: false,
+        },
+    },
 }
 
 export default databaseConfig

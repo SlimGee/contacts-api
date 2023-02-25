@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16b2ba3f-9d8d-4705-9b9c-d09ef2a48794" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.adonisrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.adonisrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yarn/install-state.gz" beforeDir="false" afterPath="$PROJECT_DIR$/.yarn/install-state.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Contact.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Contact.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/given/Documents/JS/contacts-api",
+    "last_opened_file_path": "/home/given/Documents/PHP/some",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -45,7 +54,7 @@
     "nodejs_package_manager_path": "yarn",
     "prettierjs.PrettierConfiguration.Package": "/home/given/Documents/JS/contacts-api/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/home/given/Documents/JS/contacts-api/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/given/Documents/JavaScript/contacts-api/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,11 +73,18 @@
       <workItem from="1675409238580" duration="1153000" />
       <workItem from="1675412584428" duration="6395000" />
       <workItem from="1675427560369" duration="4212000" />
+      <workItem from="1677174840270" duration="5219000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="includedJSSourcePackages">
+      <set>
+        <option value="@adonisjs/auth" />
+        <option value="@adonisjs/lucid" />
+      </set>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

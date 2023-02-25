@@ -21,7 +21,18 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return { hello: 'world' }
+    return { hello: 'world' }
 })
 
 Route.resource('contacts', 'ContactsController').as('contacts')
+
+Route.post('login', async ({ auth, request, response }) => {
+    const email = request.input('email')
+    const password = request.input('password')
+
+    try {
+        return await auth.use('api').attempt(email, password)
+    } catch {
+        return response.unauthorized('Invalid credentials')
+    }
+})
